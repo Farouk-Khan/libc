@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkhan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/17 08:09:10 by fkhan             #+#    #+#             */
-/*   Updated: 2018/06/06 12:32:25 by fkhan            ###   ########.fr       */
+/*   Created: 2018/05/21 14:10:56 by fkhan             #+#    #+#             */
+/*   Updated: 2018/06/06 14:39:02 by fkhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *str)
+char	*ft_strstr(const char *s1, const char *s2)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!(*s2))
+		return ((char *)s1);
+	while (s1[i] != '\0')
 	{
+		j = 0;
+		while (s2[j] == s1[i + j])
+		{
+			if (s2[j + 1] == '\0')
+			{
+				return ((char *)s1 + i);
+			}
+			j++;
+		}
 		i++;
 	}
-	return (i);
+	return (0);
 }

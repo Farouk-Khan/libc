@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkhan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/17 08:09:10 by fkhan             #+#    #+#             */
-/*   Updated: 2018/06/06 12:32:25 by fkhan            ###   ########.fr       */
+/*   Created: 2018/05/28 09:25:48 by fkhan             #+#    #+#             */
+/*   Updated: 2018/06/01 13:27:34 by fkhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-size_t		ft_strlen(const char *str)
+void	ft_putnbr(int n)
 {
-	int i;
+	long int i;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = n;
+	if (i < 0)
 	{
-		i++;
+		i = i * (-1);
+		ft_putchar('-');
 	}
-	return (i);
+	if (i > 9)
+	{
+		ft_putnbr(i / 10);
+		ft_putnbr(i % 10);
+	}
+	else
+		ft_putchar('0' + i);
 }

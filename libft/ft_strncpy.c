@@ -6,31 +6,32 @@
 /*   By: fkhan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 12:25:15 by fkhan             #+#    #+#             */
-/*   Updated: 2018/05/18 12:44:16 by fkhan            ###   ########.fr       */
+/*   Updated: 2018/06/06 13:11:18 by fkhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strncpy(char *s1, char *s2, unsigned int len)
+char	*ft_strncpy(char *s1, const char *s2, size_t len)
 {
 	int i;
 
 	i = 0;
-	while (i <= 52)
+	while (i < len)
 	{
-		s1[i] = s2[i];
-		i++;
+		if (s2[i] != '\0')
+		{
+			s1[i] = s2[i];
+			i++;
+		}
+		else
+		{
+			while (i < len)
+			{
+				s1[i] = '\0';
+				i++;
+			}
+		}
 	}
 	return (s1);
-}
-
-int		main()
-{
-	char c[] = "hey there";
-	char *a;
-
-	printf("%s", ft_strncpy(a, c, 6));
-	return (0);
 }

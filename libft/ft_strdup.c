@@ -6,14 +6,14 @@
 /*   By: fkhan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 08:17:42 by fkhan             #+#    #+#             */
-/*   Updated: 2018/05/18 11:13:25 by fkhan            ###   ########.fr       */
+/*   Updated: 2018/06/06 13:07:24 by fkhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+char	*ft_strdup(const char *str)
 {
 	int		i;
 	char	*hold;
@@ -28,6 +28,7 @@ char	*ft_strdup(char *str)
 			hold[i] = str[i];
 			i++;
 		}
+		hold[i] = '\0';
 		return (hold);
 	}
 	else

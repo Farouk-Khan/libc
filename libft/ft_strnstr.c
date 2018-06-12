@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkhan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/17 08:09:10 by fkhan             #+#    #+#             */
-/*   Updated: 2018/06/06 12:32:25 by fkhan            ###   ########.fr       */
+/*   Created: 2018/05/22 11:54:26 by fkhan             #+#    #+#             */
+/*   Updated: 2018/06/03 09:46:15 by fkhan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *str)
+char		*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int i;
+	char	*src;
+	char	*find;
+	size_t	size;
 
-	i = 0;
-	while (str[i] != '\0')
+	src = (char *)s1;
+	find = (char *)s2;
+	size = ft_strlen(find);
+	if (!(*s1))
+		return (0);
+	if (size == 0 || !(*s2))
+		return ((char *)(src));
+	if (size > n)
+		return ((char *)0);
+	while (n-- >= size && *src)
 	{
-		i++;
+		if (ft_strncmp(src, find, size) == 0)
+			return ((char *)src);
+		src++;
 	}
-	return (i);
+	return ((char *)0);
 }
